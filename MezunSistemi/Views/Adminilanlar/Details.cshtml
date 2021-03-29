@@ -1,0 +1,57 @@
+﻿@model MezunSistemi.Models.Ilanlar
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <h4>Ilanlar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Icerik_Baslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Icerik_Baslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Icerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Icerik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ilan_Tipi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ilan_Tipi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sirketler.Sirket_Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sirketler.Sirket_Adi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Ilan_Id }) |
+    @Html.ActionLink("İlanlar Listesine Dön", "Index")
+</p>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MezunSistemi.Models.Ilanlar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Yeni İlan", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Icerik_Baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Icerik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ilan_Tipi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sirketler.Sirket_Adi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Icerik_Baslik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Icerik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tarih)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ilan_Tipi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sirketler.Sirket_Adi)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.Ilan_Id }) |
+            @Html.ActionLink("Ayrıntılar", "Details", new { id=item.Ilan_Id }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.Ilan_Id })
+        </td>
+    </tr>
+}
+
+</table>

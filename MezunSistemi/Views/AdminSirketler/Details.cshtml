@@ -1,0 +1,49 @@
+﻿@model MezunSistemi.Models.Sirketler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <h4>Sirketler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Sirket_Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sirket_Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sirket_TelNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sirket_TelNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sirket_Mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sirket_Mail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Sirket_Id }) |
+    @Html.ActionLink("Şirketler Listesine Dön", "Index")
+</p>

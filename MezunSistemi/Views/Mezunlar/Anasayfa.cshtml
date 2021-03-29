@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MezunSistemi.Models.Mezunlar>
+@{
+    ViewBag.Title = "Anasayfa";
+}
+
+<h2>Anasayfa</h2>
+
+@foreach (var item in Model)
+{
+<h2>
+    @item.Ad
+    @item.Soyad
+</h2>
+}

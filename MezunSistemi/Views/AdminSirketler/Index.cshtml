@@ -1,0 +1,69 @@
+﻿@model IEnumerable<MezunSistemi.Models.Sirketler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#myTable').DataTable(
+            {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+                }
+            }
+        );
+    });
+</script>
+
+<p>
+    @Html.ActionLink("Yeni Şirket Ekle...", "Create")
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sirket_Adi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sirket_TelNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sirket_Mail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sirket_Adi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Adres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sirket_TelNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sirket_Mail)
+                </td>
+                <td>
+                    @Html.ActionLink("Düzenle", "Edit", new { id = item.Sirket_Id }) |
+                    @Html.ActionLink("Ayrıntılar", "Details", new { id = item.Sirket_Id }) |
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Sirket_Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>

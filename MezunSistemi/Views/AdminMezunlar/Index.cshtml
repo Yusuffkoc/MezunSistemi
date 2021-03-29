@@ -1,0 +1,117 @@
+﻿@model IEnumerable<MezunSistemi.Models.Mezunlar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#myTable').DataTable(
+            {
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+                }
+            }
+        );
+    });
+</script>
+
+<p>
+    @Html.ActionLink("Yeni Kayıt", "Create")
+</p>
+<table class="table" id="myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Soyad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tel_No)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Yabanci_Dil)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sertifika_Bilgisi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mezuniyet_Yili)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Calisma_Durumu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sifre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Okul_Numarasi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sirketler.Sirket_Adi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tel_No)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Yabanci_Dil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sertifika_Bilgisi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mezuniyet_Yili)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Calisma_Durumu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sifre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Okul_Numarasi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sirketler.Sirket_Adi)
+                </td>
+                <td>
+                    @Html.ActionLink("Düzenle", "Edit", new { id = item.Mezun_Id }) |
+                    @Html.ActionLink("Ayrıntılar", "Details", new { id = item.Mezun_Id }) |
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Mezun_Id })
+                </td>
+            </tr>
+
+
+        }
+    </tbody>
+
+</table>

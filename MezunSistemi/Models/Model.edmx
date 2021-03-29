@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MezunSistemiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Anket_Sorgulari">
+          <Key>
+            <PropertyRef Name="AnketSorgu_Id" />
+          </Key>
+          <Property Name="AnketSorgu_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Anket_Id" Type="int" Nullable="false" />
+          <Property Name="Soru" Type="varchar(max)" Nullable="false" />
+          <Property Name="Cevap_A" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cevap_B" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cevap_C" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kullanici_Cevap" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mezun_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Anketler">
+          <Key>
+            <PropertyRef Name="Anket_Id" />
+          </Key>
+          <Property Name="Anket_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mezun_Id" Type="int" Nullable="false" />
+          <Property Name="Tarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Arkadas">
+          <Key>
+            <PropertyRef Name="Kullanici_1" />
+            <PropertyRef Name="Kullanici_2" />
+          </Key>
+          <Property Name="Kullanici_1" Type="int" Nullable="false" />
+          <Property Name="Kullanici_2" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ilanlar">
+          <Key>
+            <PropertyRef Name="Ilan_Id" />
+          </Key>
+          <Property Name="Ilan_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sirket_Id" Type="int" Nullable="false" />
+          <Property Name="Icerik_Baslik" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Icerik" Type="varchar(max)" Nullable="false" />
+          <Property Name="Tarih" Type="datetime" Nullable="false" />
+          <Property Name="Ilan_Tipi" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mesajlar">
+          <Key>
+            <PropertyRef Name="Mesaj_Id" />
+          </Key>
+          <Property Name="Mesaj_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mesaj" Type="varchar(max)" Nullable="false" />
+          <Property Name="Gonderici_Id" Type="int" Nullable="false" />
+          <Property Name="Alici_Id" Type="int" Nullable="false" />
+          <Property Name="Tarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mezun_Gonderileri">
+          <Key>
+            <PropertyRef Name="MezunGonderi_Id" />
+          </Key>
+          <Property Name="MezunGonderi_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mezun_Id" Type="int" Nullable="false" />
+          <Property Name="Gonderi_Basligi" Type="varchar(max)" />
+          <Property Name="Gonderi_Icerigi" Type="varchar(max)" />
+          <Property Name="Ilan_Id" Type="int" />
+          <Property Name="Tarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mezunlar">
+          <Key>
+            <PropertyRef Name="Mezun_Id" />
+          </Key>
+          <Property Name="Mezun_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="TC" Type="varchar" MaxLength="13" />
+          <Property Name="Tel_No" Type="varchar" MaxLength="13" />
+          <Property Name="Egitim_Bilgisi" Type="varchar" MaxLength="100" />
+          <Property Name="Yabanci_Dil" Type="varchar" MaxLength="40" />
+          <Property Name="Sertifika_Bilgisi" Type="varchar" MaxLength="200" />
+          <Property Name="Mezuniyet_Yili" Type="int" />
+          <Property Name="Sirket_Id" Type="int" Nullable="false" />
+          <Property Name="Calisma_Durumu" Type="bit" />
+          <Property Name="Sifre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Okul_Numarasi" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mezunlar_Sirketler">
+          <Key>
+            <PropertyRef Name="MezunSirket_Id" />
+          </Key>
+          <Property Name="MezunSirket_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mezun_Id" Type="int" Nullable="false" />
+          <Property Name="Sirket_Id" Type="int" Nullable="false" />
+          <Property Name="Baslangıc_Tarihi" Type="datetime" Nullable="false" />
+          <Property Name="Bitis_Tarihi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sirketin_Departmanlari">
+          <Key>
+            <PropertyRef Name="Departman_Id" />
+          </Key>
+          <Property Name="Departman_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sirket_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sirketler">
+          <Key>
+            <PropertyRef Name="Sirket_Id" />
+          </Key>
+          <Property Name="Sirket_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sirket_Adi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adres" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Sirket_TelNo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sirket_Mail" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Anket_Sorgulari_Anketler">
+          <End Role="Anketler" Type="Self.Anketler" Multiplicity="1" />
+          <End Role="Anket_Sorgulari" Type="Self.Anket_Sorgulari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Anketler">
+              <PropertyRef Name="Anket_Id" />
+            </Principal>
+            <Dependent Role="Anket_Sorgulari">
+              <PropertyRef Name="Anket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Anket_Sorgulari_Mezunlar">
+          <End Role="Mezunlar" Type="Self.Mezunlar" Multiplicity="1" />
+          <End Role="Anket_Sorgulari" Type="Self.Anket_Sorgulari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mezunlar">
+              <PropertyRef Name="Mezun_Id" />
+            </Principal>
+            <Dependent Role="Anket_Sorgulari">
+              <PropertyRef Name="Mezun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Anketler_Mezunlar">
+          <End Role="Mezunlar" Type="Self.Mezunlar" Multiplicity="1" />
+          <End Role="Anketler" Type="Self.Anketler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mezunlar">
+              <PropertyRef Name="Mezun_Id" />
+            </Principal>
+            <Dependent Role="Anketler">
+              <PropertyRef Name="Mezun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ilanlar_Sirketler">
+          <End Role="Sirketler" Type="Self.Sirketler" Multiplicity="1" />
+          <End Role="Ilanlar" Type="Self.Ilanlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirketler">
+              <PropertyRef Name="Sirket_Id" />
+            </Principal>
+            <Dependent Role="Ilanlar">
+              <PropertyRef Name="Sirket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mezun_Gonderileri_Mezunlar">
+          <End Role="Mezunlar" Type="Self.Mezunlar" Multiplicity="1" />
+          <End Role="Mezun_Gonderileri" Type="Self.Mezun_Gonderileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mezunlar">
+              <PropertyRef Name="Mezun_Id" />
+            </Principal>
+            <Dependent Role="Mezun_Gonderileri">
+              <PropertyRef Name="Mezun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mezunlar_Sirketler_Mezunlar">
+          <End Role="Mezunlar" Type="Self.Mezunlar" Multiplicity="1" />
+          <End Role="Mezunlar_Sirketler" Type="Self.Mezunlar_Sirketler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mezunlar">
+              <PropertyRef Name="Mezun_Id" />
+            </Principal>
+            <Dependent Role="Mezunlar_Sirketler">
+              <PropertyRef Name="Mezun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mezunlar_Sirketler_Sirketler">
+          <End Role="Sirketler" Type="Self.Sirketler" Multiplicity="1" />
+          <End Role="Mezunlar_Sirketler" Type="Self.Mezunlar_Sirketler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirketler">
+              <PropertyRef Name="Sirket_Id" />
+            </Principal>
+            <Dependent Role="Mezunlar_Sirketler">
+              <PropertyRef Name="Sirket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sirketin_Departmanlari_Sirketler">
+          <End Role="Sirketler" Type="Self.Sirketler" Multiplicity="1" />
+          <End Role="Sirketin_Departmanlari" Type="Self.Sirketin_Departmanlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirketler">
+              <PropertyRef Name="Sirket_Id" />
+            </Principal>
+            <Dependent Role="Sirketin_Departmanlari">
+              <PropertyRef Name="Sirket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MezunSistemiModelStoreContainer">
+          <EntitySet Name="Anket_Sorgulari" EntityType="Self.Anket_Sorgulari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Anketler" EntityType="Self.Anketler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Arkadas" EntityType="Self.Arkadas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ilanlar" EntityType="Self.Ilanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesajlar" EntityType="Self.Mesajlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mezun_Gonderileri" EntityType="Self.Mezun_Gonderileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mezunlar" EntityType="Self.Mezunlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mezunlar_Sirketler" EntityType="Self.Mezunlar_Sirketler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sirketin_Departmanlari" EntityType="Self.Sirketin_Departmanlari" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sirketler" EntityType="Self.Sirketler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Anket_Sorgulari_Anketler" Association="Self.FK_Anket_Sorgulari_Anketler">
+            <End Role="Anketler" EntitySet="Anketler" />
+            <End Role="Anket_Sorgulari" EntitySet="Anket_Sorgulari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Anket_Sorgulari_Mezunlar" Association="Self.FK_Anket_Sorgulari_Mezunlar">
+            <End Role="Mezunlar" EntitySet="Mezunlar" />
+            <End Role="Anket_Sorgulari" EntitySet="Anket_Sorgulari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Anketler_Mezunlar" Association="Self.FK_Anketler_Mezunlar">
+            <End Role="Mezunlar" EntitySet="Mezunlar" />
+            <End Role="Anketler" EntitySet="Anketler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ilanlar_Sirketler" Association="Self.FK_Ilanlar_Sirketler">
+            <End Role="Sirketler" EntitySet="Sirketler" />
+            <End Role="Ilanlar" EntitySet="Ilanlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mezun_Gonderileri_Mezunlar" Association="Self.FK_Mezun_Gonderileri_Mezunlar">
+            <End Role="Mezunlar" EntitySet="Mezunlar" />
+            <End Role="Mezun_Gonderileri" EntitySet="Mezun_Gonderileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mezunlar_Sirketler_Mezunlar" Association="Self.FK_Mezunlar_Sirketler_Mezunlar">
+            <End Role="Mezunlar" EntitySet="Mezunlar" />
+            <End Role="Mezunlar_Sirketler" EntitySet="Mezunlar_Sirketler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mezunlar_Sirketler_Sirketler" Association="Self.FK_Mezunlar_Sirketler_Sirketler">
+            <End Role="Sirketler" EntitySet="Sirketler" />
+            <End Role="Mezunlar_Sirketler" EntitySet="Mezunlar_Sirketler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sirketin_Departmanlari_Sirketler" Association="Self.FK_Sirketin_Departmanlari_Sirketler">
+            <End Role="Sirketler" EntitySet="Sirketler" />
+            <End Role="Sirketin_Departmanlari" EntitySet="Sirketin_Departmanlari" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MezunSistemiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Anket_Sorgulari">
+          <Key>
+            <PropertyRef Name="AnketSorgu_Id" />
+          </Key>
+          <Property Name="AnketSorgu_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Anket_Id" Type="Int32" Nullable="false" />
+          <Property Name="Soru" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cevap_A" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cevap_B" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cevap_C" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Kullanici_Cevap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mezun_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Anketler" Relationship="Self.FK_Anket_Sorgulari_Anketler" FromRole="Anket_Sorgulari" ToRole="Anketler" />
+          <NavigationProperty Name="Mezunlar" Relationship="Self.FK_Anket_Sorgulari_Mezunlar" FromRole="Anket_Sorgulari" ToRole="Mezunlar" />
+        </EntityType>
+        <EntityType Name="Anketler">
+          <Key>
+            <PropertyRef Name="Anket_Id" />
+          </Key>
+          <Property Name="Anket_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mezun_Id" Type="Int32" Nullable="false" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Anket_Sorgulari" Relationship="Self.FK_Anket_Sorgulari_Anketler" FromRole="Anketler" ToRole="Anket_Sorgulari" />
+          <NavigationProperty Name="Mezunlar" Relationship="Self.FK_Anketler_Mezunlar" FromRole="Anketler" ToRole="Mezunlar" />
+        </EntityType>
+        <EntityType Name="Arkadas">
+          <Key>
+            <PropertyRef Name="Kullanici_1" />
+            <PropertyRef Name="Kullanici_2" />
+          </Key>
+          <Property Name="Kullanici_1" Type="Int32" Nullable="false" />
+          <Property Name="Kullanici_2" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ilanlar">
+          <Key>
+            <PropertyRef Name="Ilan_Id" />
+          </Key>
+          <Property Name="Ilan_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sirket_Id" Type="Int32" Nullable="false" />
+          <Property Name="Icerik_Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Icerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Ilan_Tipi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Sirketler" Relationship="Self.FK_Ilanlar_Sirketler" FromRole="Ilanlar" ToRole="Sirketler" />
+        </EntityType>
+        <EntityType Name="Mesajlar">
+          <Key>
+            <PropertyRef Name="Mesaj_Id" />
+          </Key>
+          <Property Name="Mesaj_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gonderici_Id" Type="Int32" Nullable="false" />
+          <Property Name="Alici_Id" Type="Int32" Nullable="false" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Mezun_Gonderileri">
+          <Key>
+            <PropertyRef Name="MezunGonderi_Id" />
+          </Key>
+          <Property Name="MezunGonderi_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mezun_Id" Type="Int32" Nullable="false" />
+          <Property Name="Gonderi_Basligi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Gonderi_Icerigi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ilan_Id" Type="Int32" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Mezunlar" Relationship="Self.FK_Mezun_Gonderileri_Mezunlar" FromRole="Mezun_Gonderileri" ToRole="Mezunlar" />
+        </EntityType>
+        <EntityType Name="Mezunlar">
+          <Key>
+            <PropertyRef Name="Mezun_Id" />
+          </Key>
+          <Property Name="Mezun_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TC" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Tel_No" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Egitim_Bilgisi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Yabanci_Dil" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Sertifika_Bilgisi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Mezuniyet_Yili" Type="Int32" />
+          <Property Name="Sirket_Id" Type="Int32" Nullable="false" />
+          <Property Name="Calisma_Durumu" Type="Boolean" />
+          <NavigationProperty Name="Anket_Sorgulari" Relationship="Self.FK_Anket_Sorgulari_Mezunlar" FromRole="Mezunlar" ToRole="Anket_Sorgulari" />
+          <NavigationProperty Name="Anketler" Relationship="Self.FK_Anketler_Mezunlar" FromRole="Mezunlar" ToRole="Anketler" />
+          <NavigationProperty Name="Mezun_Gonderileri" Relationship="Self.FK_Mezun_Gonderileri_Mezunlar" FromRole="Mezunlar" ToRole="Mezun_Gonderileri" />
+          <NavigationProperty Name="Sirketler" Relationship="Self.FK_Mezunlar_Sirketler" FromRole="Mezunlar" ToRole="Sirketler" />
+          <NavigationProperty Name="Mezunlar_Sirketler" Relationship="Self.FK_Mezunlar_Sirketler_Mezunlar" FromRole="Mezunlar" ToRole="Mezunlar_Sirketler" />
+          <Property Name="Sifre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Okul_Numarasi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Mezunlar_Sirketler">
+          <Key>
+            <PropertyRef Name="MezunSirket_Id" />
+          </Key>
+          <Property Name="MezunSirket_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mezun_Id" Type="Int32" Nullable="false" />
+          <Property Name="Sirket_Id" Type="Int32" Nullable="false" />
+          <Property Name="Baslangıc_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Bitis_Tarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Mezunlar" Relationship="Self.FK_Mezunlar_Sirketler_Mezunlar" FromRole="Mezunlar_Sirketler" ToRole="Mezunlar" />
+          <NavigationProperty Name="Sirketler" Relationship="Self.FK_Mezunlar_Sirketler_Sirketler" FromRole="Mezunlar_Sirketler" ToRole="Sirketler" />
+        </EntityType>
+        <EntityType Name="Sirketin_Departmanlari">
+          <Key>
+            <PropertyRef Name="Departman_Id" />
+          </Key>
+          <Property Name="Departman_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sirket_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sirketler" Relationship="Self.FK_Sirketin_Departmanlari_Sirketler" FromRole="Sirketin_Departmanlari" ToRole="Sirketler" />
+        </EntityType>
+        <EntityType Name="Sirketler">
+          <Key>
+            <PropertyRef Name="Sirket_Id" />
+          </Key>
+          <Property Name="Sirket_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sirket_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sirket_TelNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sirket_Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Ilanlar" Relationship="Self.FK_Ilanlar_Sirketler" FromRole="Sirketler" ToRole="Ilanlar" />
+          <NavigationProperty Name="Mezunlar" Relationship="Self.FK_Mezunlar_Sirketler" FromRole="Sirketler" ToRole="Mezunlar" />
+          <NavigationProperty Name="Mezunlar_Sirketler" Relationship="Self.FK_Mezunlar_Sirketler_Sirketler" FromRole="Sirketler" ToRole="Mezunlar_Sirketler" />
+          <NavigationProperty Name="Sirketin_Departmanlari" Relationship="Self.FK_Sirketin_Departmanlari_Sirketler" FromRole="Sirketler" ToRole="Sirketin_Departmanlari" />
+        </EntityType>
+        <Association Name="FK_Anket_Sorgulari_Anketler">
+          <End Role="Anketler" Type="Self.Anketler" Multiplicity="1" />
+          <End Role="Anket_Sorgulari" Type="Self.Anket_Sorgulari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Anketler">
+              <PropertyRef Name="Anket_Id" />
+            </Principal>
+            <Dependent Role="Anket_Sorgulari">
+              <PropertyRef Name="Anket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Anket_Sorgulari_Mezunlar">
+          <End Role="Mezunlar" Type="Self.Mezunlar" Multiplicity="1" />
+          <End Role="Anket_Sorgulari" Type="Self.Anket_Sorgulari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mezunlar">
+              <PropertyRef Name="Mezun_Id" />
+            </Principal>
+            <Dependent Role="Anket_Sorgulari">
+              <PropertyRef Name="Mezun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Anketler_Mezunlar">
+          <End Role="Mezunlar" Type="Self.Mezunlar" Multiplicity="1" />
+          <End Role="Anketler" Type="Self.Anketler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mezunlar">
+              <PropertyRef Name="Mezun_Id" />
+            </Principal>
+            <Dependent Role="Anketler">
+              <PropertyRef Name="Mezun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ilanlar_Sirketler">
+          <End Role="Sirketler" Type="Self.Sirketler" Multiplicity="1" />
+          <End Role="Ilanlar" Type="Self.Ilanlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirketler">
+              <PropertyRef Name="Sirket_Id" />
+            </Principal>
+            <Dependent Role="Ilanlar">
+              <PropertyRef Name="Sirket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mezun_Gonderileri_Mezunlar">
+          <End Role="Mezunlar" Type="Self.Mezunlar" Multiplicity="1" />
+          <End Role="Mezun_Gonderileri" Type="Self.Mezun_Gonderileri" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mezunlar">
+              <PropertyRef Name="Mezun_Id" />
+            </Principal>
+            <Dependent Role="Mezun_Gonderileri">
+              <PropertyRef Name="Mezun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mezunlar_Sirketler">
+          <End Role="Sirketler" Type="Self.Sirketler" Multiplicity="1" />
+          <End Role="Mezunlar" Type="Self.Mezunlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirketler">
+              <PropertyRef Name="Sirket_Id" />
+            </Principal>
+            <Dependent Role="Mezunlar">
+              <PropertyRef Name="Sirket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mezunlar_Sirketler_Mezunlar">
+          <End Role="Mezunlar" Type="Self.Mezunlar" Multiplicity="1" />
+          <End Role="Mezunlar_Sirketler" Type="Self.Mezunlar_Sirketler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mezunlar">
+              <PropertyRef Name="Mezun_Id" />
+            </Principal>
+            <Dependent Role="Mezunlar_Sirketler">
+              <PropertyRef Name="Mezun_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mezunlar_Sirketler_Sirketler">
+          <End Role="Sirketler" Type="Self.Sirketler" Multiplicity="1" />
+          <End Role="Mezunlar_Sirketler" Type="Self.Mezunlar_Sirketler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirketler">
+              <PropertyRef Name="Sirket_Id" />
+            </Principal>
+            <Dependent Role="Mezunlar_Sirketler">
+              <PropertyRef Name="Sirket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sirketin_Departmanlari_Sirketler">
+          <End Role="Sirketler" Type="Self.Sirketler" Multiplicity="1" />
+          <End Role="Sirketin_Departmanlari" Type="Self.Sirketin_Departmanlari" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sirketler">
+              <PropertyRef Name="Sirket_Id" />
+            </Principal>
+            <Dependent Role="Sirketin_Departmanlari">
+              <PropertyRef Name="Sirket_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MezunSistemiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Anket_Sorgulari" EntityType="Self.Anket_Sorgulari" />
+          <EntitySet Name="Anketler" EntityType="Self.Anketler" />
+          <EntitySet Name="Arkadas" EntityType="Self.Arkadas" />
+          <EntitySet Name="Ilanlar" EntityType="Self.Ilanlar" />
+          <EntitySet Name="Mesajlar" EntityType="Self.Mesajlar" />
+          <EntitySet Name="Mezun_Gonderileri" EntityType="Self.Mezun_Gonderileri" />
+          <EntitySet Name="Mezunlar" EntityType="Self.Mezunlar" />
+          <EntitySet Name="Mezunlar_Sirketler" EntityType="Self.Mezunlar_Sirketler" />
+          <EntitySet Name="Sirketin_Departmanlari" EntityType="Self.Sirketin_Departmanlari" />
+          <EntitySet Name="Sirketler" EntityType="Self.Sirketler" />
+          <AssociationSet Name="FK_Anket_Sorgulari_Anketler" Association="Self.FK_Anket_Sorgulari_Anketler">
+            <End Role="Anketler" EntitySet="Anketler" />
+            <End Role="Anket_Sorgulari" EntitySet="Anket_Sorgulari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Anket_Sorgulari_Mezunlar" Association="Self.FK_Anket_Sorgulari_Mezunlar">
+            <End Role="Mezunlar" EntitySet="Mezunlar" />
+            <End Role="Anket_Sorgulari" EntitySet="Anket_Sorgulari" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Anketler_Mezunlar" Association="Self.FK_Anketler_Mezunlar">
+            <End Role="Mezunlar" EntitySet="Mezunlar" />
+            <End Role="Anketler" EntitySet="Anketler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ilanlar_Sirketler" Association="Self.FK_Ilanlar_Sirketler">
+            <End Role="Sirketler" EntitySet="Sirketler" />
+            <End Role="Ilanlar" EntitySet="Ilanlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mezun_Gonderileri_Mezunlar" Association="Self.FK_Mezun_Gonderileri_Mezunlar">
+            <End Role="Mezunlar" EntitySet="Mezunlar" />
+            <End Role="Mezun_Gonderileri" EntitySet="Mezun_Gonderileri" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mezunlar_Sirketler" Association="Self.FK_Mezunlar_Sirketler">
+            <End Role="Sirketler" EntitySet="Sirketler" />
+            <End Role="Mezunlar" EntitySet="Mezunlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mezunlar_Sirketler_Mezunlar" Association="Self.FK_Mezunlar_Sirketler_Mezunlar">
+            <End Role="Mezunlar" EntitySet="Mezunlar" />
+            <End Role="Mezunlar_Sirketler" EntitySet="Mezunlar_Sirketler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mezunlar_Sirketler_Sirketler" Association="Self.FK_Mezunlar_Sirketler_Sirketler">
+            <End Role="Sirketler" EntitySet="Sirketler" />
+            <End Role="Mezunlar_Sirketler" EntitySet="Mezunlar_Sirketler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sirketin_Departmanlari_Sirketler" Association="Self.FK_Sirketin_Departmanlari_Sirketler">
+            <End Role="Sirketler" EntitySet="Sirketler" />
+            <End Role="Sirketin_Departmanlari" EntitySet="Sirketin_Departmanlari" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="MezunSistemiModel.sysdiagrams" />
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MezunSistemiModelStoreContainer" CdmEntityContainer="MezunSistemiEntities">
+          <EntitySetMapping Name="Anket_Sorgulari">
+            <EntityTypeMapping TypeName="MezunSistemiModel.Anket_Sorgulari">
+              <MappingFragment StoreEntitySet="Anket_Sorgulari">
+                <ScalarProperty Name="AnketSorgu_Id" ColumnName="AnketSorgu_Id" />
+                <ScalarProperty Name="Anket_Id" ColumnName="Anket_Id" />
+                <ScalarProperty Name="Soru" ColumnName="Soru" />
+                <ScalarProperty Name="Cevap_A" ColumnName="Cevap_A" />
+                <ScalarProperty Name="Cevap_B" ColumnName="Cevap_B" />
+                <ScalarProperty Name="Cevap_C" ColumnName="Cevap_C" />
+                <ScalarProperty Name="Kullanici_Cevap" ColumnName="Kullanici_Cevap" />
+                <ScalarProperty Name="Mezun_Id" ColumnName="Mezun_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Anketler">
+            <EntityTypeMapping TypeName="MezunSistemiModel.Anketler">
+              <MappingFragment StoreEntitySet="Anketler">
+                <ScalarProperty Name="Anket_Id" ColumnName="Anket_Id" />
+                <ScalarProperty Name="Mezun_Id" ColumnName="Mezun_Id" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Arkadas">
+            <EntityTypeMapping TypeName="MezunSistemiModel.Arkadas">
+              <MappingFragment StoreEntitySet="Arkadas">
+                <ScalarProperty Name="Kullanici_1" ColumnName="Kullanici_1" />
+                <ScalarProperty Name="Kullanici_2" ColumnName="Kullanici_2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ilanlar">
+            <EntityTypeMapping TypeName="MezunSistemiModel.Ilanlar">
+              <MappingFragment StoreEntitySet="Ilanlar">
+                <ScalarProperty Name="Ilan_Id" ColumnName="Ilan_Id" />
+                <ScalarProperty Name="Sirket_Id" ColumnName="Sirket_Id" />
+                <ScalarProperty Name="Icerik_Baslik" ColumnName="Icerik_Baslik" />
+                <ScalarProperty Name="Icerik" ColumnName="Icerik" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Ilan_Tipi" ColumnName="Ilan_Tipi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesajlar">
+            <EntityTypeMapping TypeName="MezunSistemiModel.Mesajlar">
+              <MappingFragment StoreEntitySet="Mesajlar">
+                <ScalarProperty Name="Mesaj_Id" ColumnName="Mesaj_Id" />
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+                <ScalarProperty Name="Gonderici_Id" ColumnName="Gonderici_Id" />
+                <ScalarProperty Name="Alici_Id" ColumnName="Alici_Id" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mezun_Gonderileri">
+            <EntityTypeMapping TypeName="MezunSistemiModel.Mezun_Gonderileri">
+              <MappingFragment StoreEntitySet="Mezun_Gonderileri">
+                <ScalarProperty Name="MezunGonderi_Id" ColumnName="MezunGonderi_Id" />
+                <ScalarProperty Name="Mezun_Id" ColumnName="Mezun_Id" />
+                <ScalarProperty Name="Gonderi_Basligi" ColumnName="Gonderi_Basligi" />
+                <ScalarProperty Name="Gonderi_Icerigi" ColumnName="Gonderi_Icerigi" />
+                <ScalarProperty Name="Ilan_Id" ColumnName="Ilan_Id" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mezunlar">
+            <EntityTypeMapping TypeName="MezunSistemiModel.Mezunlar">
+              <MappingFragment StoreEntitySet="Mezunlar">
+                <ScalarProperty Name="Okul_Numarasi" ColumnName="Okul_Numarasi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Mezun_Id" ColumnName="Mezun_Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="TC" ColumnName="TC" />
+                <ScalarProperty Name="Tel_No" ColumnName="Tel_No" />
+                <ScalarProperty Name="Egitim_Bilgisi" ColumnName="Egitim_Bilgisi" />
+                <ScalarProperty Name="Yabanci_Dil" ColumnName="Yabanci_Dil" />
+                <ScalarProperty Name="Sertifika_Bilgisi" ColumnName="Sertifika_Bilgisi" />
+                <ScalarProperty Name="Mezuniyet_Yili" ColumnName="Mezuniyet_Yili" />
+                <ScalarProperty Name="Sirket_Id" ColumnName="Sirket_Id" />
+                <ScalarProperty Name="Calisma_Durumu" ColumnName="Calisma_Durumu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mezunlar_Sirketler">
+            <EntityTypeMapping TypeName="MezunSistemiModel.Mezunlar_Sirketler">
+              <MappingFragment StoreEntitySet="Mezunlar_Sirketler">
+                <ScalarProperty Name="MezunSirket_Id" ColumnName="MezunSirket_Id" />
+                <ScalarProperty Name="Mezun_Id" ColumnName="Mezun_Id" />
+                <ScalarProperty Name="Sirket_Id" ColumnName="Sirket_Id" />
+                <ScalarProperty Name="Baslangıc_Tarihi" ColumnName="Baslangıc_Tarihi" />
+                <ScalarProperty Name="Bitis_Tarihi" ColumnName="Bitis_Tarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sirketin_Departmanlari">
+            <EntityTypeMapping TypeName="MezunSistemiModel.Sirketin_Departmanlari">
+              <MappingFragment StoreEntitySet="Sirketin_Departmanlari">
+                <ScalarProperty Name="Departman_Id" ColumnName="Departman_Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Sirket_Id" ColumnName="Sirket_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sirketler">
+            <EntityTypeMapping TypeName="MezunSistemiModel.Sirketler">
+              <MappingFragment StoreEntitySet="Sirketler">
+                <ScalarProperty Name="Sirket_Id" ColumnName="Sirket_Id" />
+                <ScalarProperty Name="Sirket_Adi" ColumnName="Sirket_Adi" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Sirket_TelNo" ColumnName="Sirket_TelNo" />
+                <ScalarProperty Name="Sirket_Mail" ColumnName="Sirket_Mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MezunSistemiModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,65 @@
+﻿@model MezunSistemi.Models.Ilanlar
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<h3>Silmek istediğine emin misin ?</h3>
+<div>
+    <h4>Ilanlar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Icerik_Baslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Icerik_Baslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Icerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Icerik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ilan_Tipi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ilan_Tipi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sirketler.Sirket_Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sirketler.Sirket_Adi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("İlanlar Listesine Dön", "Index")
+        </div>
+    }
+</div>

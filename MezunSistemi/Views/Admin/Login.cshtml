@@ -1,0 +1,124 @@
+﻿@model MezunSistemi.Models.Mezunlar
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin - Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="~/AdminTema/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template-->
+    <link href="~/AdminTema/css/sb-admin.css" rel="stylesheet">
+
+</head>
+
+
+<body class="bg-white">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            
+            <h5>@ViewBag.Uyari</h5>
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="container">
+
+                <div class="row mt-5">
+
+                    <div class="col-md-4 col-sm-6 portfolio-item">
+                        <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
+
+                            <img class="img-fluid" src="~/img/portfolio/05-thumbnail.jpg" alt="">
+                        </a>
+
+                        <div class="portfolio-caption mt-3">
+                            <h3>Mezun Sistemi</h3>
+                            <h4>Karadeniz Teknik Üniversitesi</h4>
+                        </div>
+                    </div>
+                    <div class="card card-login mx-auto ">
+
+                        <div class="card-header">Giriş</div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group ">
+                                    @*<div class="form-label-group">
+                                            <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+                                            <label for="inputEmail">Okul Numaranız</label>
+                                        </div>*@
+                                    @Html.LabelFor(model => model.Okul_Numarasi, htmlAttributes: new { @class = "control-label col-md" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Okul_Numarasi, new { htmlAttributes = new { @class = "form-control col-md+10" } })
+                                        @Html.ValidationMessageFor(model => model.Okul_Numarasi, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    @*<div class="form-label-group">
+                                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+                                            <label for="inputPassword">Şifre</label>
+                                        </div>*@
+
+                                    @Html.LabelFor(model => model.Sifre, htmlAttributes: new { @class = "control-label col-md" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Sifre, new { htmlAttributes = new { @class = "form-control col-md+10 " } })
+                                        @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+
+
+
+
+
+                                <div class="form-group">
+
+                                    <input type="submit" value="Giriş" class="btn btn-primary btn-block" />
+
+
+                                </div>
+
+                                @*<a class="btn btn-primary btn-block" href="/Mezunlar/MezunIndex">Giriş</a>*@
+
+                                <a class="btn btn-primary btn-block" href="/AdminGirisi/Login">Admin Girişi İçin Tıklayınız...</a>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bootstrap core JavaScript-->
+            <script src="~/AdminTema/vendor/jquery/jquery.min.js"></script>
+            <script src="~/AdminTema/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+            <!-- Core plugin JavaScript-->
+            <script src="~/AdminTema/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+
+        </div>
+    }
+</body>
+</html>
+
+

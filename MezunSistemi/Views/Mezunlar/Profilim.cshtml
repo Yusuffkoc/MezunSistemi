@@ -1,0 +1,100 @@
+﻿@model IEnumerable<MezunSistemi.Models.Mezunlar>
+
+@{
+    ViewBag.Title = "Profilim";
+    Layout = "~/Views/Shared/_MezunLayout.cshtml";
+}
+
+<h2>Profilim</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tel_No)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Egitim_Bilgisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yabanci_Dil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sertifika_Bilgisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mezuniyet_Yili)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calisma_Durumu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sifre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Okul_Numarasi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sirketler.Sirket_Adi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tel_No)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Egitim_Bilgisi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yabanci_Dil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sertifika_Bilgisi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mezuniyet_Yili)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Calisma_Durumu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sifre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Okul_Numarasi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sirketler.Sirket_Adi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Mezun_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Mezun_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Mezun_Id })
+        </td>
+    </tr>
+}
+
+</table>
